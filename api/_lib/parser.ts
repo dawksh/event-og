@@ -36,7 +36,7 @@ export function parseRequest(req: IncomingMessage) {
         widths: getArray(widths),
         heights: getArray(heights),
     };
-    parsedRequest.images = getDefaultImages(parsedRequest.images, parsedRequest.theme);
+    parsedRequest.images = getDefaultImages(parsedRequest.theme);
     return parsedRequest;
 }
 
@@ -50,16 +50,10 @@ function getArray(stringOrArray: string[] | string | undefined): string[] {
     }
 }
 
-function getDefaultImages(images: string[], theme: Theme): string[] {
+function getDefaultImages(theme: Theme): string[] {
     const defaultImage = theme === 'light'
         ? 'https://res.cloudinary.com/metapass/image/upload/v1659255713/Vector_1_jrsqzx.svg'
         : 'https://res.cloudinary.com/metapass/image/upload/v1659255713/Vector_1_jrsqzx.svg';
 
-    if (!images || !images[0]) {
-        return [defaultImage];
-    }
-    if (!images[0].startsWith('https://assets.vercel.com/') && !images[0].startsWith('https://assets.zeit.co/')) {
-        images[0] = defaultImage;
-    }
-    return images;
+    return [defaultImage]
 }
