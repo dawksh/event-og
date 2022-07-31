@@ -47,7 +47,7 @@ function getCss(theme: string, fontSize: string) {
         font-family: 'Azonix';
         font-style: normal;
         font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${azonix})  format("otf");
+        src: url(data:font/woff2;charset=utf-8;base64,${azonix})  format("opentype");
       }
 
     body {
